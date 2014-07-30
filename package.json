@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "devDependencies": {
+    "babel-core": "^5.8.25",
+    "browser-sync": "^2.8.2",
+    "react": "^0.13.3"
+  }
+}
