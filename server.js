@@ -35,6 +35,5 @@ require('browser-sync')({
         next();
       }
     }
-  },
-  startPath: '/index.html'
+  }
 });
