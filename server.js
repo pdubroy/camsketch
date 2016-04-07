@@ -13,9 +13,9 @@ function saveImage(req, res) {
     var info = dataurl.parse(data);
     assert.equal(info.mimetype, 'image/png');
 
-    var filename = path.join(__dirname, 'image.png');
+    var filename = path.join(__dirname, 'out', 'image.png');
     fs.writeFile(filename, info.data, {}, function(err) {
-      if (!err) {
+      if (err) {
         console.error(err);
       }
     });
