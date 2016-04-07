@@ -1,0 +1,25 @@
+{
+  "extends": "google",
+
+  // To minimize dependencies on Node- or browser-specific features, leave the
+  // env empty, and instead define globals as needed.
+  "env": {},
+
+  // Project-wide globals. If other globals are necessary, prefer putting them
+  // in a comment at the top of the file rather than adding them here.
+  "globals": {
+    "console": true,
+    "module": true,
+    "require": true,
+  },
+  "rules": {
+    "brace-style": [2, "1tbs", {"allowSingleLine": true}],
+    "consistent-this": [2, "self"],
+    "no-constant-condition": 0,
+    "no-implicit-coercion": [2, {"allow": ["!!", "+"]}],
+    "no-unused-vars": [2, {"vars": "all", "args": "none"}],
+    "quotes": [2, "single", "avoid-escape"],
+    "require-jsdoc": 0,
+    "strict": [2, "safe"]
+  }
+}
