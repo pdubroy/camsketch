@@ -10,6 +10,14 @@ var textBody = require('body');
 var IMAGE_DIR = join(
     process.env.HOME, 'Library/Application Support/org.cdglabs.camsketch');
 
+function dirExists(path) {
+  try {
+    return fs.statSync(path).isDirectory();
+  } catch (e) {
+    return false;
+  }
+}
+
 // Handlers for requests to `/saveImage`.
 function saveImage(req, res) {
   textBody(req, function(err, data) {
@@ -28,7 +36,7 @@ function saveImage(req, res) {
 }
 
 // Ensure that the directory exists.
-if (!fs.statSync(IMAGE_DIR).isDirectory()) {
+if (!dirExists(IMAGE_DIR)) {
   fs.mkdirSync(IMAGE_DIR);
 }
 
