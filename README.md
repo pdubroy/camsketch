@@ -50,7 +50,9 @@ Inspired by Ishii and Kobayashi's [ClearBoard](http://tangible.media.mit.edu/pro
 
 - From the root of the camsketch repository, run `npm start`.
 
-- From your iPad, visit the "External" URL that's listed in the console.
+- From your iPad, visit the "External" URL that's listed in the console:
+
+  ![Screenshot of terminal indicating ULR to use](./doc/images/external-url.png)
 
 - In Skype/Hangouts/etc., make sure to set "CamTwist" as your camera source:
 
