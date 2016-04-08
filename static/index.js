@@ -4,7 +4,7 @@
 (function() {
   var canvas = document.querySelector('canvas');
   var ctx = canvas.getContext('2d');
-  var canvasChanged = false;
+  var canvasChanged = true;
 
   // Helpers
   // -------
@@ -34,6 +34,7 @@
 
   function handleTouchEnd(e) {
     ctx.closePath();
+    maybeSaveImage();
   }
 
   function maybeSaveImage() {
@@ -85,5 +86,6 @@
     };
   }
 
+  maybeSaveImage();
   window.setInterval(maybeSaveImage, 1000);
 })();
