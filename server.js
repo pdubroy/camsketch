@@ -1,10 +1,14 @@
 /* eslint-env node */
 
 var assert = require('assert');
+var browserSync = require('browser-sync');
 var dataurl = require('dataurl');
 var fs = require('fs');
+var join = require('path').join;
 var textBody = require('body');
-var path = require('path');
+
+var IMAGE_DIR = join(
+    process.env.HOME, 'Library/Application Support/org.cdglabs.camsketch');
 
 // Handlers for requests to `/saveImage`.
 function saveImage(req, res) {
@@ -13,8 +17,8 @@ function saveImage(req, res) {
     var info = dataurl.parse(data);
     assert.equal(info.mimetype, 'image/png');
 
-    var filename = path.join(__dirname, 'out', 'image.png');
-    fs.writeFile(filename, info.data, {}, function(err) {
+    var filePath = join(IMAGE_DIR, 'image.png');
+    fs.writeFile(filePath, info.data, {}, function(err) {
       if (err) {
         console.error(err);
       }
@@ -23,9 +27,15 @@ function saveImage(req, res) {
   });
 }
 
+// Ensure that the directory exists.
+if (!fs.statSync(IMAGE_DIR).isDirectory()) {
+  fs.mkdirSync(IMAGE_DIR);
+}
+
 // See http://www.browsersync.io/docs/options/ for more information.
-require('browser-sync')({
+browserSync({
   files: ['*'],
+  open: false,
   server: {
     baseDir: 'static',
     middleware: function(req, res, next) {
