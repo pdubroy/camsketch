@@ -10,7 +10,7 @@
     "react": "^0.13.3"
   },
   "scripts": {
-    "postinstall": "bin/postinstall",
+    "postinstall": "bash bin/postinstall",
     "lint": "eslint **/*.js"
   }
 }
