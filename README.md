@@ -1,5 +1,10 @@
 # camsketch
 
+![Photo of me using camsketch](./doc/images/me-camsketch.png)
+
+Sketch on a tablet, and have the image overlayed on a video stream.
+Inspired by Ishii and Kobayashi's [ClearBoard](http://tangible.media.mit.edu/project/clearboard/).
+
 ## Prerequisities
 
 - [CamTwist](http://camtwiststudio.com/download/) (tested with version 3.0)
@@ -19,7 +24,7 @@
 
 - Open CamTwist. You should see the following window:
 
-  ![Image of CamTwist main window](./doc/images/camtwist-mainwindow.png)
+  ![CamTwist main window](./doc/images/camtwist-mainwindow.png)
 
   If this window does not appear, select View -> Main Window from the CamTwist
   menu.
@@ -28,8 +33,12 @@
 
 - In the "Step 2" column, find "camsketch-overlay" and double-click it.
 
+  ![CamTwist "Step 2" column](./doc/images/camtwist-step2.png)
+
 - Click the "Save Setup" button and give this setup a name, e.g. "camsketch".
-  Uncheck "Don't include video source" and click "Save".
+  Uncheck "Don't include video source" and click "Save":
+
+  ![CamTwist "Save Setup" dialog](./doc/images/camtwist-savesetup.png)
 
 - (Optional) Click the "Auto load" button to make CamTwist automatically load
   this setup as soon you open the app.
@@ -45,4 +54,6 @@
 
 - In Skype/Hangouts/etc., make sure to set "CamTwist" as your camera source:
 
-- Sketch on your iPad, and the image will be overlayed on your video stream:
+  ![Screenshot of Skype Audio/Video settings](./doc/images/skype-settings.png)
+
+- Sketch on your iPad, and the image will be overlayed on your video stream.
