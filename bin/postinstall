@@ -1,4 +1,5 @@
 #!/bin/bash
 
+mkdir ~/Library/Application\ Support/CamTwist 2> /dev/null
 mkdir ~/Library/Application\ Support/CamTwist/Effects 2> /dev/null
 cp camsketch-overlay.qtz ~/Library/Application\ Support/CamTwist/Effects
