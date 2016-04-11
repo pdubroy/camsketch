@@ -45,6 +45,7 @@
       };
       xhr.open('POST', 'saveImage', true);
       xhr.send(canvas.toDataURL());
+      canvasChanged = false;
     }
   }
 
