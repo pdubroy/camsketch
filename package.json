@@ -6,7 +6,7 @@
   },
   "scripts": {
     "build-installer": "bash bin/build-installer",
-    "postinstall": "bash bin/postinstall",
+    "prepublish": "npm run lint && npm run build-installer",
     "lint": "eslint **/*.js"
   }
 }
