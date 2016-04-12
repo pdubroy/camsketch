@@ -8,8 +8,8 @@ import socket
 from data_uri import DataURI
 
 HOME_DIR = os.environ['HOME']
-IMAGE_DIR = os.path.join(HOME_DIR,
-                         'Library/Application Support/org.cdglabs.camsketch')
+IMAGE_DIR = os.path.join(
+    HOME_DIR, 'Library/Application Support/org.cdglabs.camsketch')
 
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
@@ -33,31 +33,45 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(data)
 
-if __name__ == "__main__":
-    # Set the root of the server to the 'frontend' dir.
-    # SimpleHTTPRequestHandler will serve GET requests from there.
-    root = os.path.join(
+
+class CamsketchServer(object):
+    def __init__(self):
+        # Set the root of the server to the 'frontend' dir.
+        # SimpleHTTPRequestHandler will serve GET requests from there.
+        root = os.path.join(
             os.path.dirname(os.path.abspath(__file__)), '../frontend')
-    os.chdir(root)
+        os.chdir(root)
 
-    if not os.path.exists(IMAGE_DIR):
-        os.makedirs(IMAGE_DIR)
+        if not os.path.exists(IMAGE_DIR):
+            os.makedirs(IMAGE_DIR)
 
-    port = 8000
+        self.port = 8000
 
-    # Try to find an open port anywhere between 8000 and 8080
-    httpd = None
-    for i in xrange(1, 80):
-        try:
-            httpd = SocketServer.TCPServer(("", port), Handler)
-            break
-        except socket.error:
-            port = port + i
+        # Try to find an open port anywhere between 8000 and 8080
+        self.httpd = None
+        for i in xrange(1, 80):
+            try:
+                self.httpd = SocketServer.TCPServer(("", self.port), Handler)
+                break
+            except socket.error:
+                self.port = self.port + i
 
-    if httpd:
-        server = "http://" + socket.gethostbyname(socket.gethostname())
-        print "camsketch is listening at " + server + ':' + str(port)
-        try:
-            httpd.serve_forever()
-        except KeyboardInterrupt:
-            pass
+        if not self.httpd:
+            raise Exception("Could not find an open port")
+
+        hostname = "http://" + socket.gethostbyname(socket.gethostname())
+        self.address = hostname + ':' + str(self.port)
+
+    def serve_forever(self):
+        print "camsketch is listening at " + self.address
+        self.httpd.serve_forever()
+
+    def shutdown(self):
+        self.httpd.shutdown()
+
+
+if __name__ == "__main__":
+    try:
+        CamsketchServer().serve_forever()
+    except KeyboardInterrupt:
+        pass
