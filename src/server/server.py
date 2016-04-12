@@ -34,9 +34,13 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
   # Set the root of the server to the 'frontend' dir.
+  # SimpleHTTPRequestHandler will serve GET requests from there.
   root = os.path.join(
       os.path.dirname(os.path.abspath(__file__)), '../frontend')
   os.chdir(root)
+
+  if not os.path.exists(IMAGE_DIR):
+      os.makedirs(IMAGE_DIR)
 
   port = 8000
 
