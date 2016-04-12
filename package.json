@@ -5,6 +5,7 @@
     "eslint-config-google": "^0.4.0"
   },
   "scripts": {
+    "build-installer": "bash bin/build-installer",
     "postinstall": "bash bin/postinstall",
     "lint": "eslint **/*.js"
   }
