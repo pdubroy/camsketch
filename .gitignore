@@ -1,3 +1,4 @@
+dist/camsketch
 node_modules
 npm-debug.log
 *.pyc
