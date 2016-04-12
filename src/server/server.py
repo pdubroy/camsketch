@@ -4,12 +4,12 @@ import SimpleHTTPServer
 import SocketServer
 import os
 import socket
-import sys
 
 from data_uri import DataURI
 
 IMAGE_DIR = os.path.join(
     os.environ['HOME'], 'Library/Application Support/org.cdglabs.camsketch')
+
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
   def do_POST(self):
@@ -33,8 +33,9 @@ class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     self.wfile.write(data)
 
 if __name__ == "__main__":
-  # Set the root of the server to the 'static' dir.
-  root = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+  # Set the root of the server to the 'frontend' dir.
+  root = os.path.join(
+      os.path.dirname(os.path.abspath(__file__)), '../frontend')
   os.chdir(root)
 
   port = 8000
