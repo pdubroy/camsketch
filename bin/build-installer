@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd $(npm prefix)
-zip -r dist/camsketch.zip src bin/postinstall
+zip -r dist/camsketch.zip src bin/postinstall CamTwist-config.xml
