@@ -5,12 +5,11 @@ set -e
 echo; cd $(dirname "${BASH_SOURCE[0]}")
 
 echo -n "camsketch: installing our plugin into CamTwist's Effects directory..."
-mkdir ~/Library/Application\ Support/CamTwist 2> /dev/null || true
-mkdir ~/Library/Application\ Support/CamTwist/Effects 2> /dev/null || true
+mkdir -p ~/Library/Application\ Support/CamTwist/Effects
 cp ../src/camsketch-overlay.qtz ~/Library/Application\ Support/CamTwist/Effects && echo "done."
 
 echo -n "camsketch: installing a CamTwist saved setup..."
-mkdir ~/Library/Application\ Support/CamTwist/Saved\ Setups/ 2> /dev/null || true
+mkdir -p ~/Library/Application\ Support/CamTwist/Saved\ Setups/
 cp ../CamTwist-config.xml ~/Library/Application\ Support/CamTwist/Saved\ Setups/camsketch && echo "done."
 
 echo -n "camsketch: modifying CamTwist settings to autoload camsketch setup..."
