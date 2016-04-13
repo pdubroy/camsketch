@@ -1,6 +1,6 @@
-# camsketch
+# Camsketch
 
-![Photo of me using camsketch](./doc/images/me-camsketch.png)
+![Photo of me using Camsketch](./doc/images/me-camsketch.png)
 
 Sketch on a tablet, and have the image overlayed on a video stream.
 Inspired by Ishii and Kobayashi's [ClearBoard](http://tangible.media.mit.edu/project/clearboard/).
@@ -25,7 +25,7 @@ Inspired by Ishii and Kobayashi's [ClearBoard](http://tangible.media.mit.edu/pro
 
 ## Usage
 
-1. From the root directory of your camsketch checkout, run the server script:
+1. From the root directory of your Camsketch checkout, run the server script:
 
         python src/server/server.py
 
@@ -36,6 +36,8 @@ Inspired by Ishii and Kobayashi's [ClearBoard](http://tangible.media.mit.edu/pro
    ![Screenshot of Skype Audio/Video settings](./doc/images/skype-settings.png)
 
 3. On your tablet, open a browser and go to the URL that was displayed in the
-   terminal after Step 1.
+   terminal after Step 1:
+
+   ![Screenshot of Camsketch URL in terminal](./doc/images/camsketch-url.png)
 
 4. Sketch on your tablet, and the image will be overlayed on your video stream.
