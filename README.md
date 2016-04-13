@@ -25,19 +25,19 @@ Inspired by Ishii and Kobayashi's [ClearBoard](http://tangible.media.mit.edu/pro
 
 ## Usage
 
-1. From the root directory of your Camsketch checkout, run the server script:
-
-        python src/server/server.py
-
-   This will launch CamTwist, and start a local web server.
-
-2. In Skype/Hangouts/etc., make sure to set "CamTwist" as your camera source:
+1. In Skype/Hangouts/etc., make sure "CamTwist" is set as your camera source:
 
    ![Screenshot of Skype Audio/Video settings](./doc/images/skype-settings.png)
 
-3. On your tablet, open a browser and go to the URL that was displayed in the
-   terminal after Step 1:
+2. From the root directory of your Camsketch checkout, run the server script:
+
+        python src/server/server.py
+
+   This will launch CamTwist, and start a local web server which will be
+   accessible on your local network:
 
    ![Screenshot of Camsketch URL in terminal](./doc/images/camsketch-url.png)
+
+3. On your tablet, open the URL that was displayed in the previous step.
 
 4. Sketch on your tablet, and the image will be overlayed on your video stream.
