@@ -7,23 +7,34 @@ import socket
 
 from data_uri import DataURI
 
-HOME_DIR = os.environ['HOME']
+# The current user's home directory.
+HOME_DIR = os.environ["HOME"]
+
+# The directory in which to save the sketched image.
 IMAGE_DIR = os.path.join(
-    HOME_DIR, 'Library/Application Support/org.cdglabs.camsketch')
+    HOME_DIR, "Library/Application Support/org.cdglabs.camsketch")
+
+# A URI for a 1x1 empty PNG.
+EMPTY_IMAGE = DataURI(
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAA" +
+    "C0lEQVQIW2NkAAIAAAoAAggA9GkAAAAASUVORK5CYII=")
+
+
+def _save_image(uri):
+    with open(os.path.join(IMAGE_DIR, 'image.png'), 'wb') as f:
+        f.write(uri.data)
 
 
 class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
     def do_POST(self):
-        if self.path == '/saveImage':
-            self._save_image()
+        if self.path == "/saveImage":
+            self._save_request_image()
         else:
-            raise Exception('Unexpected POST request to ' + self.path)
+            raise Exception("Unexpected POST request to " + self.path)
 
-    def _save_image(self):
-        content_len = int(self.headers.getheader('content-length'))
-        uri = DataURI(self.rfile.read(content_len))
-        with open(os.path.join(IMAGE_DIR, 'image.png'), 'wb') as f:
-            f.write(uri.data)
+    def _save_request_image(self):
+        content_len = int(self.headers.getheader("content-length"))
+        _save_image(DataURI(self.rfile.read(content_len)))
         self._send_response(200, 'ok')
 
     def _send_response(self, code, data):
@@ -39,7 +50,7 @@ class CamsketchServer(object):
         # Set the root of the server to the 'frontend' dir.
         # SimpleHTTPRequestHandler will serve GET requests from there.
         root = os.path.join(
-            os.path.dirname(os.path.abspath(__file__)), '../frontend')
+            os.path.dirname(os.path.abspath(__file__)), "../frontend")
         os.chdir(root)
 
         if not os.path.exists(IMAGE_DIR):
@@ -68,10 +79,12 @@ class CamsketchServer(object):
 
     def shutdown(self):
         self.httpd.shutdown()
+        _save_image(EMPTY_IMAGE)
 
 
 if __name__ == "__main__":
+    server = CamsketchServer()
     try:
-        CamsketchServer().serve_forever()
+        server.serve_forever()
     except KeyboardInterrupt:
-        pass
+        server.shutdown()
