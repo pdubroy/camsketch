@@ -7,6 +7,8 @@ Inspired by Ishii and Kobayashi's [ClearBoard](http://tangible.media.mit.edu/pro
 
 ## Prerequisities
 
+- A computer with a webcam and a recent version of Mac OS X (10.10 and 10.11 should work).
+
 - Install CamTwist. [Version 3.0](http://camtwiststudio.com/beta/CamTwist_3.0.dmg)
   is recommended -- it **does** in fact work with OS X 10.11.1 (El Capitan).
 
