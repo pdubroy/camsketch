@@ -7,55 +7,35 @@ Inspired by Ishii and Kobayashi's [ClearBoard](http://tangible.media.mit.edu/pro
 
 ## Prerequisities
 
-- [CamTwist](http://camtwiststudio.com/download/) (tested with version 3.0)
-    - Version 3.0 works with OS X El Capitan (10.11.1)
-- [Node.js](https://nodejs.org/en/) (tested with version 4.4.2)
+- Install CamTwist. [Version 3.0](http://camtwiststudio.com/beta/CamTwist_3.0.dmg)
+  is recommended -- it **does** in fact work with OS X 10.11.1 (El Capitan).
 
 ## Installation
 
-- Clone this repository:
+1. Clone this repository:
 
         git clone https://github.com/pdubroy/camsketch
 
-- Run `npm install` from the repository root:
+2. Run the installation script:
 
         cd camsketch
-        npm install
+        bin/install.command
 
-- Open CamTwist. You should see the following window:
-
-  ![CamTwist main window](./doc/images/camtwist-mainwindow.png)
-
-  If this window does not appear, select View -> Main Window from the CamTwist
-  menu.
-
-- Double-click "Webcam" under "Step 1"
-
-- In the "Step 2" column, find "camsketch-overlay" and double-click it.
-
-  ![CamTwist "Step 2" column](./doc/images/camtwist-step2.png)
-
-- Click the "Save Setup" button and give this setup a name, e.g. "camsketch".
-  Uncheck "Don't include video source" and click "Save":
-
-  ![CamTwist "Save Setup" dialog](./doc/images/camtwist-savesetup.png)
-
-- (Optional) Click the "Auto load" button to make CamTwist automatically load
-  this setup as soon you open the app.
+  (You can also run it by double-clicking the file in Finder.)
 
 ## Usage
 
-- Make sure CamTwist is running and the setup you created during installation
-  is active.
+1. From the root directory of your camsketch checkout, run the server script:
 
-- From the root of the camsketch repository, run `npm start`.
+        python src/server/server.py
 
-- From your iPad, visit the "External" URL that's listed in the console:
+   This will launch CamTwist, and start a local web server.
 
-  ![Screenshot of terminal indicating ULR to use](./doc/images/external-url.png)
+2. In Skype/Hangouts/etc., make sure to set "CamTwist" as your camera source:
 
-- In Skype/Hangouts/etc., make sure to set "CamTwist" as your camera source:
+   ![Screenshot of Skype Audio/Video settings](./doc/images/skype-settings.png)
 
-  ![Screenshot of Skype Audio/Video settings](./doc/images/skype-settings.png)
+3. On your tablet, open a browser and go to the URL that was displayed in the
+   terminal after Step 1.
 
-- Sketch on your iPad, and the image will be overlayed on your video stream.
+4. Sketch on your tablet, and the image will be overlayed on your video stream.
