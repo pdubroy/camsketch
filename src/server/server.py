@@ -4,6 +4,8 @@ import SimpleHTTPServer
 import SocketServer
 import os
 import socket
+import subprocess
+import sys
 
 from data_uri import DataURI
 
@@ -81,8 +83,13 @@ class CamsketchServer(object):
         self.httpd.shutdown()
         _save_image(EMPTY_IMAGE)
 
+def activate_camtwist():
+  sys.stdout.write("Activating CamTwist..."); sys.stdout.flush()
+  subprocess.call(["osascript", "-e", "tell application \"CamTwist\" to activate"])
+  print "done."
 
 if __name__ == "__main__":
+    activate_camtwist()
     server = CamsketchServer()
     try:
         server.serve_forever()

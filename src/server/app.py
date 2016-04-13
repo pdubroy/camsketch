@@ -1,7 +1,7 @@
 import rumps
 import threading
 
-from server import CamsketchServer
+import server
 
 class CamsketchStatusBarApp(rumps.App):
     def __init__(self, address):
@@ -10,8 +10,9 @@ class CamsketchStatusBarApp(rumps.App):
 
 
 if __name__ == "__main__":
-    server = CamsketchServer()
-    threading.Thread(target=server.serve_forever).start()
-    app = CamsketchStatusBarApp(server.address)
+    server.activate_camtwist()
+    s = server.CamsketchServer()
+    threading.Thread(target=s.serve_forever).start()
+    app = CamsketchStatusBarApp(s.address)
     app.run()
-    server.shutdown()
+    s.shutdown()
